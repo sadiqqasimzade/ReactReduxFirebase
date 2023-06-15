@@ -6,7 +6,7 @@ import MainRouter from '../routes/MainRouter';
 
 export function App() {
   return (
-    <div className='min-h-screen bg-sky-950'>
+    <div className='bg-sky-950'>
       <Navbar/>
       <MainRouter/>
       <Footer/>

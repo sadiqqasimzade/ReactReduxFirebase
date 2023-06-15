@@ -43,10 +43,12 @@ export function Navbar(props: NavbarProps) {
               <li className='text-white'>Item3</li>
               <li className='text-white'>Item4</li>
               <li className='text-white'>Item5</li>
-              <li className={styles['dropdowntoggler']}>
+              <li className={`${styles['dropdowntoggler']} relative`}>
                 <button className="flex items-center text-gray-900 rounded-full hover:text-blue-600 dark:hover:text-blue-500 md:mr-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white" type="button">
                   {loading ?
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 animate-spin text-white" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 animate-spin text-white">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                    </svg>
                     : user ?
                       <div className='flex justify-center'>
                         {user.photoURL ?
@@ -58,10 +60,10 @@ export function Navbar(props: NavbarProps) {
                         }
                       </div>
                       :
-                      <p>Not logined</p>
+                      <p>Not logged in</p>
                   }
                 </button>
-                <div className={`${styles['dropdown']}`.concat(" absolute right-20 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600")}>
+                <div className={`${styles['dropdown']}`.concat(" transition absolute max-[500px]:left-0 max-[500px]:right-auto right-0 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600")}>
                   {user ?
                     <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
                       {user.displayName ?
@@ -74,13 +76,13 @@ export function Navbar(props: NavbarProps) {
                     : <></>
                   }
                   {user ?
-                    <div className="py-2 px-2">
+                    <div className="py-2 px-4">
                       <button className='button bg-slate-600 rounded p-1' onClick={handleSignOut}>Sign out</button>
                     </div>
                     :
-                    <div className="py-2 px-2 flex justify-around">
-                      <Link to={'/'} className='button bg-slate-600 rounded p-1' onClick={() => dispatch(changeComponent('login'))}>Sign in</Link>
-                      <Link to={'/'} className='button bg-slate-600 rounded p-1' onClick={() => dispatch(changeComponent('register'))} >Sign up</Link>
+                    <div className="py-2 px-4 flex justify-around gap-5">
+                      <Link to={'/'} className='button bg-slate-600 rounded p-1 w-max' onClick={() => dispatch(changeComponent('login'))}>Sign in</Link>
+                      <Link to={'/'} className='button bg-slate-600 rounded p-1 w-max' onClick={() => dispatch(changeComponent('register'))} >Sign up</Link>
                     </div>
                   }
                 </div>

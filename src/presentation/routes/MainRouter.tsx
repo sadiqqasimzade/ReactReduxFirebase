@@ -17,16 +17,18 @@ export function MainRouter(props: MainRouterProps) {
 
   return (
     <Suspense fallback={<Loading />}>
-      <Container>
-        <Routes>
-          {user ?
-            (<Route path='/' element={<MainPage />}></Route>) 
-            :
-            (<Route path='/' element={<LoginRegister />}></Route>)
-          }
-          <Route path='*' element={<NotFound />}></Route>
-        </Routes>
-      </Container>
+      <div className='min-h-screen'>
+        <Container>
+          <Routes>
+            {user ?
+              (<Route path='/' element={<MainPage />}></Route>)
+              :
+              (<Route path='/' element={<LoginRegister />}></Route>)
+            }
+            <Route path='*' element={<NotFound />}></Route>
+          </Routes>
+        </Container>
+      </div>
     </Suspense>
   );
 }

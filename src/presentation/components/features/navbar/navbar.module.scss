@@ -1,11 +1,11 @@
 .dropdown {
-    visibility: hidden;
+    opacity: 0;
 }
 
 .dropdowntoggler {
     &:hover {
         .dropdown {
-            visibility: visible !important;
+            opacity: 1 !important;
         }
     }
 }
